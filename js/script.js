@@ -3,10 +3,13 @@ $(document).ready(function () {
   var counterUp = $('.counter-up');
   var counterDown = $('.counter-down');
   var floorPath = $('.home-image path');
-  
+
   floorPath.on('mouseover', function () {
     currentFloor = $(this).attr('data-floor');
+    usCurrentFloor = currentFloor.toLocaleString('en-US', {minimumIntegerDigits: 2, useGroupping: false});
+    $('.counter').text(usCurrentFloor);
     floorPath.removeClass('current-floor');
+    $(`[data-floor=${usCurrentFloor}]`).toggleClass('current-floor');
     $('.counter').text(currentFloor);
   });
 
