@@ -3,6 +3,11 @@ $(document).ready(function () {
   var counterUp = $('.counter-up');
   var counterDown = $('.counter-down');
   var floorPath = $('.home-image path');
+  var modal = $('.modal');
+  var modalCloseButton = $('.modal-close-button');
+  var viewFlatsButton = $('.view-flats');
+  var flatPath = $('.modal-image path');
+  var flatLink = $('.flat-link');
 
   floorPath.on('mouseover', function () {
     currentFloor = $(this).attr('data-floor');
@@ -31,5 +36,37 @@ $(document).ready(function () {
       floorPath.removeClass('current-floor');
       $(`[data-floor=${usCurrentFloor}]`).toggleClass('current-floor');
     }
+  });
+
+  floorPath.on('click', toggleModal);
+  modalCloseButton.on('click', toggleModal);
+  viewFlatsButton.on('click', toggleModal);
+
+  function toggleModal () {
+    modal.toggleClass('is-open');
+  };
+
+  flatPath.on('mouseover', function () {
+    currentFlat = $(this).attr('data-flat');
+    flatPath.removeClass('current-flat');
+    flatLink.removeClass('current-flat-link');
+    $(`[data-flat=${currentFlat}]`).addClass('current-flat');
+    $(`[data-flat=${currentFlat}]`).addClass('current-flat-link');
+  });
+
+  flatLink.on('click', function () {
+    currentFlat = $(this).attr('data-flat');
+    flatPath.removeClass('current-flat');
+    flatLink.removeClass('current-flat-link');
+    $(`[data-flat=${currentFlat}]`).addClass('current-flat');
+    $(`[data-flat=${currentFlat}]`).addClass('current-flat-link');
+  });
+
+  flatLink.on('mouseover', function () {
+    currentFlat = $(this).attr('data-flat');
+    flatPath.removeClass('current-flat');
+    flatLink.removeClass('current-flat-link');
+    $(`[data-flat=${currentFlat}]`).addClass('current-flat');
+    $(`[data-flat=${currentFlat}]`).addClass('current-flat-link');
   });
 });
